@@ -2,8 +2,8 @@ from rest_framework import viewsets
 
 from api.models import Test
 from api.serializers import TestSerializer
-from .task import mul
 
+from .task import run_script
 
 class TestViewSet(viewsets.ModelViewSet):
     queryset = Test.objects.all()
@@ -11,5 +11,7 @@ class TestViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         ret = super(TestViewSet, self).create(request, *args, **kwargs)
-        mul.delay(2, 2)
+
+        run_script.delay(ret.data["id"])
+
         return ret
