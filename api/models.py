@@ -25,6 +25,14 @@ class Test(models.Model):
 
     log_information = models.TextField(null=True, blank=True)
 
+    @property
+    def script_tested(self):
+        if self.test_template:
+            return self.test_template
+        elif self.test_script:
+            return self.test_script
+        return ""
+
     def get_script(self):
         if self.test_template:
             return "{}{}".format(self.TESTS_PATH, self.test_template)
