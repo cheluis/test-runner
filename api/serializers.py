@@ -8,4 +8,4 @@ class TestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Test
         fields = ('id', 'username', 'test_enviroment_id', 'test_template',
-                  'test_script', 'status', 'script_tested', 'created_at')
+                  'test_script', 'status', 'script_tested', 'created_at', 'log_information')

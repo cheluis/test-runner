@@ -21,5 +21,5 @@ def run_script(test_id):
         instance.status = "F"
     else:
         instance.status = "P"
-
+    instance.log_information = out_str
     instance.save()
