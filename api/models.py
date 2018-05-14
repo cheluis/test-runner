@@ -37,5 +37,5 @@ class Test(models.Model):
         if self.test_template:
             return "{}{}".format(self.TESTS_PATH, self.test_template)
         elif self.test_script:
-            return self.test_script
+            return "{}{}".format(self.TESTS_PATH, self.test_script)
         return ""
