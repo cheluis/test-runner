@@ -6,7 +6,7 @@ from api.serializers import TestSerializer
 from .task import run_script
 
 class TestViewSet(viewsets.ModelViewSet):
-    queryset = Test.objects.all()
+    queryset = Test.objects.all().order_by('-created_at')
     serializer_class = TestSerializer
 
     def create(self, request, *args, **kwargs):
