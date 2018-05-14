@@ -1,3 +1,5 @@
+import os
+
 from rest_framework import serializers
 from .models import Test
 
@@ -13,6 +15,13 @@ class TestSerializer(serializers.ModelSerializer):
             pass
         else:
             raise serializers.ValidationError('Test running on given environment')
+
+        if "test_script" in attrs:
+            dir = attrs["test_script"]
+            if not os.path.isdir("{}{}".format(Test.TESTS_PATH, dir)):
+                if not os.path.isfile("{}{}".format(Test.TESTS_PATH, dir)):
+                    raise serializers.ValidationError('Directory doesnt exists')
+
 
         return attrs
 
