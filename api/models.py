@@ -30,7 +30,7 @@ class Test(models.Model):
         if self.test_template:
             return self.test_template
         elif self.test_script:
-            return self.test_script
+            return "Custom path: {}".format(self.test_script)
         return ""
 
     def get_script(self):
