@@ -22,6 +22,7 @@ if exists(env_file):
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
 SECRET_KEY = env('SECRET_KEY')
 
 # Quick-start development settings - unsuitable for production
@@ -125,3 +126,7 @@ CELERY_IMPORTS = (
 VIRTUAL_ENV_PATH = env('VIRTUAL_ENV_PATH')
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+print(STATIC_ROOT)
